@@ -28,13 +28,14 @@ export default class Pricing {
    * @param {Currency} value
    */
   set currency(value) {
+    if (!(value instanceof Currency)) {
       throw new TypeError('currency must be a Currency');
     }
     this._currency = value;
   }
 
   displayFullPrice() {
-    return ;
+    return `${this.amount} ${this.currency.name} (${this.currency.code})`;
   }
 
   static convertPrice(amount, conversionRate) {
